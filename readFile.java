@@ -34,6 +34,10 @@ public class readfile {
 				}
 				
 				Test.UniqueID.checkUniqueId(ind, p.individuals);
+				
+				if (ind.getDeathDate() != null) {
+					Test.BirthBeforeDeath.compare(ind.getBirthDate(), ind.getDeathDate());
+				}
 
 				if (ind.getDeathDate() != null) {
 					Test.BirthBeforeDeath.compare(ind.getBirthDate(), ind.getDeathDate());
@@ -55,6 +59,16 @@ public class readfile {
 				System.out.println("Family Wife: " + fam.getWife().getName());
 				System.out.println("Family Wedding Date: " + fam.getWeddingDate());
 				System.out.println("Family Divorce Date: " + fam.getDivorceDate());
+				
+				if (fam.getDivorceDate() != null && fam.getWeddingDate() != null) {
+					Test.MarriageBeforeDivorce.compare(fam.getWeddingDate(), fam.getDivorceDate());
+				}
+
+				if (fam.getHusband() != null && fam.getWeddingDate() != null)
+					Test.MarriageBeforeDeath.compare(fam.getHusband().getBirthDate(), fam.getWeddingDate());
+
+				if (fam.getWife() != null && fam.getWeddingDate() != null)
+					Test.MarriageBeforeDeath.compare(fam.getWife().getBirthDate(), fam.getWeddingDate());
 				
 				if (fam.getHusband() != null && fam.getWeddingDate() != null)
 					Test.BirthBeforeMarriage.compare(fam.getHusband().getBirthDate(), fam.getWeddingDate());
