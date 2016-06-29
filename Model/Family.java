@@ -2,14 +2,23 @@ package Model;
 
 import java.util.*;
 
-public class Family 
-{
+public class Family {
+
     private String id;
     private Individual husband;
     private Individual wife;
     private String husbandId;
     private String wifeId;
     private String weddingDate;
+    private String divorceDate;
+
+    public String getDivorceDate() {
+        return divorceDate;
+    }
+
+    public void setDivorceDate(String ddate) {
+        this.divorceDate = ddate;
+    }
 
     public String getId() {
         return id;

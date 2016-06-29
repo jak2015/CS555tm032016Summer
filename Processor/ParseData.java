@@ -20,6 +20,7 @@ public class ParseData {
     private String getId(String Id) {
         return Id.replace("@", "");
     }
+ 
 
     public void readFile(String file) throws IOException {
 
@@ -81,7 +82,6 @@ public class ParseData {
                         } else if ("WIFE".equals(tag)) {
                             fam.setWifeId(getId(arguments));
                         } 
-                        
                         if ("MARR".equals(tag)) {
                             line = bufferRead.readLine();
                             String[] nextLine = (line.split("\\s+"));
@@ -89,7 +89,15 @@ public class ParseData {
                                 String wedDate = nextLine[2] + " " + nextLine[3] + " " + nextLine[4];
                                 fam.setWeddingDate(wedDate);
                             }
-                        } 
+                        } else if ("DIV".equals(tag)) {
+                            line = bufferRead.readLine();
+                            String[] nextLine = (line.split("\\s+"));
+                            if (nextLine[1].equals("DATE")) {
+                                String divDate = nextLine[2] + " " + nextLine[3] + " " + nextLine[4];
+                                fam.setDivorceDate(divDate);
+                            }
+
+                        }
                     }
                 }
                 if (level == 2) {
@@ -108,9 +116,34 @@ public class ParseData {
                 }
             }
 
-        } 
-	catch (FileNotFoundException ex) {
+        } catch (FileNotFoundException ex) {
             System.out.println("File is not found!");
+        }
+
+        setIndividualsInFamilies();
+    }
+
+    public Individual getIndividual(String id) {
+        if (individuals != null && !individuals.isEmpty()) {
+            for (int i = 0; i < individuals.size(); i++) {
+                Individual individualObject = individuals.get(i);
+                if (individualObject.getId().equals(id)) {
+                    return individualObject;
+                }
+            }
+        }
+        return null;
+    }
+
+    private void setIndividualsInFamilies() {
+        for (int i = 0; i < families.size(); i++) {
+            Family fam = families.get(i);
+            if (fam.getHusbandId() != null) {
+                fam.setHusband(getIndividual(fam.getHusbandId()));
+            }
+            if (fam.getWifeId() != null) {
+                fam.setWife(getIndividual(fam.getWifeId()));
+            }
         }
     }
 }
