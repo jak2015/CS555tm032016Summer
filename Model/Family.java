@@ -9,16 +9,11 @@ public class Family {
     private Individual wife;
     private String husbandId;
     private String wifeId;
+    private String type;
     private String weddingDate;
     private String divorceDate;
-
-    public String getDivorceDate() {
-        return divorceDate;
-    }
-
-    public void setDivorceDate(String ddate) {
-        this.divorceDate = ddate;
-    }
+    private List<String> childIdList = new ArrayList<String>();
+    private List<Individual> childList = new ArrayList<Individual>();
 
     public String getId() {
         return id;
@@ -26,6 +21,14 @@ public class Family {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getHusbandId() {
@@ -52,6 +55,14 @@ public class Family {
         this.weddingDate = wdate;
     }
 
+    public String getDivorceDate() {
+        return divorceDate;
+    }
+
+    public void setDivorceDate(String ddate) {
+        this.divorceDate = ddate;
+    }
+
     public void setHusband(Individual husband) {
         this.husband = husband;
     }
@@ -66,5 +77,21 @@ public class Family {
 
     public Individual getWife() {
         return this.wife;
+    }
+
+    public void appendChildId(String childId) {
+        this.childIdList.add(childId);
+    }
+
+    public List<String> getChildIdList() {
+        return this.childIdList;
+    }
+
+    public void appendChild(Individual child) {
+        this.childList.add(child);
+    }
+
+    public List<Individual> getChildList() {
+        return this.childList;
     }
 }

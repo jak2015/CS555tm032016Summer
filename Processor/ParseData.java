@@ -37,7 +37,6 @@ public class ParseData {
             boolean isBirthDate = true;
             Individual ind = null;
             Family fam = null;
-
             while ((line = bufferRead.readLine()) != null) {
                 String[] parseLine = (line.split("\\s+"));
                 int level = Integer.valueOf(parseLine[0]);
@@ -81,7 +80,9 @@ public class ParseData {
                             fam.setHusbandId(getId(arguments));
                         } else if ("WIFE".equals(tag)) {
                             fam.setWifeId(getId(arguments));
-                        } 
+                        } else if ("CHIL".equals(tag)) {
+                            fam.appendChildId(getId(arguments));
+                        }
                         if ("MARR".equals(tag)) {
                             line = bufferRead.readLine();
                             String[] nextLine = (line.split("\\s+"));
@@ -143,6 +144,10 @@ public class ParseData {
             }
             if (fam.getWifeId() != null) {
                 fam.setWife(getIndividual(fam.getWifeId()));
+            }
+            if (!fam.getChildIdList().isEmpty()) {
+                for (int j = 0; j < fam.getChildIdList().size(); j++)
+                    fam.appendChild(getIndividual(fam.getChildIdList().get(j)));
             }
         }
     }
