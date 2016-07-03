@@ -2,6 +2,8 @@ import Model.Family;
 import Model.Individual;
 import Processor.ParseData;
 import java.lang.Exception;
+import java.util.Collections;
+import java.util.List;
 import Test.*;
 
 public class readFile {
@@ -111,6 +113,19 @@ public class readFile {
 						Test.ChildBirthBeforeParentsMarriage.compareMarriage(fam.getChildList().get(j).getBirthDate(), fam.getWeddingDate());
 					}
 				}
+				
+				for (int j = 0; j < fam.getChildList().size(); j++) {
+					if (fam.getChildList().get(j).getBirthDate() != null && fam.getWife().getBirthDate() != null)
+						Test.ChildBirthBeforeDeathOfParent.compare(fam.getChildList().get(j).getBirthDate(), fam.getWife().getBirthDate());
+				}
+				
+				List<Individual> childList = fam.getChildList();
+				Collections.sort(childList);
+				for (int j = 0; j < fam.getChildList().size(); j++) {
+					System.out.println("Family Siblings: " + childList.get(j).getName() + " Age: " + childList.get(j).getAge());
+				}
+				
+				
 
 			}
 			System.out.println();
