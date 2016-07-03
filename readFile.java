@@ -96,6 +96,21 @@ public class readFile {
 					Test.MarriageAfter14.compare(fam.getWife().getBirthDate(), fam.getWeddingDate());
 				}
 				CompareLastNames.check(fam);
+				
+				if (fam.getHusband().getDeathDate() != null && fam.getDivorceDate() != null)
+					Test.DivorceBeforeDeath.compare(fam.getHusband().getDeathDate(), fam.getDivorceDate());
+
+				if (fam.getWife().getDeathDate() != null && fam.getDivorceDate() != null)
+					Test.DivorceBeforeDeath.compare(fam.getWife().getDeathDate(), fam.getDivorceDate());
+				
+				for (int j = 0; j < fam.getChildList().size(); j++) {
+					if (fam.getChildList().get(j).getBirthDate() != null && fam.getDivorceDate() != null){
+						Test.ChildBirthBeforeParentsMarriage.compareDivorce(fam.getChildList().get(j).getBirthDate(), fam.getDivorceDate());
+					}
+					if (fam.getChildList().get(j).getBirthDate() != null && fam.getWeddingDate() !=null){
+						Test.ChildBirthBeforeParentsMarriage.compareMarriage(fam.getChildList().get(j).getBirthDate(), fam.getWeddingDate());
+					}
+				}
 
 			}
 			System.out.println();
