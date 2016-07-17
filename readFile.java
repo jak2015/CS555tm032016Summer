@@ -125,10 +125,10 @@ public class readFile {
 			
 			for (int j = 0; j < fam.getChildList().size(); j++) {
 				if (fam.getChildList().get(j).getBirthDate() != null && fam.getDivorceDate() != null){
-					Test.ChildBirthBeforeParentsMarriage.compareDivorce(fam.getChildList().get(j).getBirthDate(), fam.getDivorceDate());
+					Test.ChildBirthBeforeParentsMarriage.compareDivorce(fam.getChildList().get(j).getBirthDate(), fam.getDivorceDate(), fam.getChildList().get(j).getId());
 				}
 				if (fam.getChildList().get(j).getBirthDate() != null && fam.getWeddingDate() !=null){
-					Test.ChildBirthBeforeParentsMarriage.compareMarriage(fam.getChildList().get(j).getBirthDate(), fam.getWeddingDate());
+					Test.ChildBirthBeforeParentsMarriage.compareMarriage(fam.getChildList().get(j).getBirthDate(), fam.getWeddingDate(), fam.getChildList().get(j).getId());
 				}
 			}
 			
@@ -143,6 +143,8 @@ public class readFile {
 			}
 			
 			Test.FewerThan15Siblings.compare(fam);
+			Test.MarriageOfSiblings.compare(fam, p.families);
+			Test.MultipleBirths.compare(fam.getChildList(), fam.getId());
 
 		}
 			
