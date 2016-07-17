@@ -12,7 +12,7 @@ public class BirthBeforeMarriage {
         Date marriageDate = format.parse(marriageDateString);
 
         if (birthDate.compareTo(marriageDate) == 1) {
-            System.out.println("Error: Birth date should be before the marriage date for Individual: "+ indId + " in family :" + famId);
+            System.out.println("Error: Birth date should be before the marriage date for Individual: "+ indId + " in family " + famId);
             return true;
         } else {
             return false;

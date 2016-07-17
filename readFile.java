@@ -57,25 +57,19 @@ public class readFile {
 				Collections.sort(childList);
 				for (int j = 0; j < fam.getChildList().size(); j++) {
 					System.out.println("Family Siblings: " + childList.get(j).getName() + " Age: " + childList.get(j).getAge());
-				}
-				
-				
+				}		
 
 			}
 			System.out.println();
 			
-			System.out.println("=== Errors and Anomalies Information for Individuals===");
+			System.out.println("=== Errors and Anomalies Information for Individuals ===");
 			for (int i = 0; i < p.individuals.size(); i++) {
 				Individual ind = p.individuals.get(i);
 				
 				Test.UniqueID.checkUniqueId(ind, p.individuals);
-				
-				if (ind.getDeathDate() != null) {
-					Test.BirthBeforeDeath.compare(ind.getBirthDate(), ind.getDeathDate());
-				}
 
 				if (ind.getDeathDate() != null) {
-					Test.BirthBeforeDeath.compare(ind.getBirthDate(), ind.getDeathDate());
+					Test.BirthBeforeDeath.compare(ind.getBirthDate(), ind.getDeathDate(), ind.getId(), "Birth", "Individual");
 				}
 				
 				if (ind.getBirthDate() != null) {
@@ -83,10 +77,11 @@ public class readFile {
 				}
 				if (ind.getDeathDate() != null) {
 					Test.DateBeforeCurrentDate.compare(ind.getDeathDate(), ind.getId(), "Death", "Individual");
-				}
-				
+				}	
 			}
-			System.out.println("=== Errors and Anomalies Information for Families===");
+			System.out.println();
+			
+			System.out.println("=== Errors and Anomalies Information for Families ===");
 			for (int i = 0; i < p.families.size(); i++) {
 				Family fam = p.families.get(i);
 			if (fam.getDivorceDate() != null && fam.getWeddingDate() != null) {
@@ -110,15 +105,15 @@ public class readFile {
 			}
 			
 			if (fam.getDivorceDate() != null) {
-				Test.DateBeforeCurrentDate.compare(fam.getDivorceDate(),  fam.getId(), "Divorce", "Family");
+				Test.DateBeforeCurrentDate.compare(fam.getDivorceDate(), fam.getId(), "Divorce", "Family");
 			}
 			
 			if (fam.getHusband() != null && fam.getWeddingDate() != null){
-				Test.MarriageAfter14.compare(fam.getHusband().getBirthDate(), fam.getWeddingDate());
+				Test.MarriageAfter14.compare(fam.getHusband().getBirthDate(), fam.getWeddingDate(), fam.getHusband().getId(),fam.getId(), "Marriage", "Individual");
 			}
 
 			if (fam.getWife() != null && fam.getWeddingDate() != null){
-				Test.MarriageAfter14.compare(fam.getWife().getBirthDate(), fam.getWeddingDate());
+				Test.MarriageAfter14.compare(fam.getWife().getBirthDate(), fam.getWeddingDate(), fam.getWife().getId() ,fam.getId(), "Marriage", "Individual");
 			}
 			CompareLastNames.check(fam);
 			

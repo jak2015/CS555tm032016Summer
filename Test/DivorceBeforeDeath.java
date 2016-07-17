@@ -14,7 +14,7 @@ public class DivorceBeforeDeath {
         Date deathDate = format.parse(deathDateString);
 
         if (divorceDate.compareTo(deathDate) == 1) {
-            System.out.println("Error: Divorce date is after the Death date for Individual ID: " + indId + "Family ID: " +famId);
+            System.out.println("Error: Divorce date is after the Death date for Individual ID " + indId + " Family ID " +famId);
             return true;
         } else {
             return false;

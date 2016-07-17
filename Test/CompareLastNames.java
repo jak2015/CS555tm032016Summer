@@ -14,11 +14,12 @@ public class CompareLastNames {
             if (fam.getChildList().get(i).getSex() == 'M')
                 nameStringList.add(fam.getChildList().get(i).getGivenName());
         }
-
+        
         for (int i = 0; i < nameStringList.size(); i++) {
             for (int j = i + 1; j < nameStringList.size(); j++) {
                 if (!nameStringList.get(i).equals(nameStringList.get(j)))
-                    System.out.println("Error: Male Last Name: All male members of a family should have the same last name");
+                	System.out.println("Error: Male members " +nameStringList.get(i) + " and " +nameStringList.get(j) +" of family id " +fam.getId()+ " does not same last names.");
+
                     return false;
             }
         }
