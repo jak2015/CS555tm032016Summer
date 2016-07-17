@@ -136,6 +136,14 @@ public class readFile {
 				if (fam.getChildList().get(j).getBirthDate() != null && fam.getWife().getBirthDate() != null)
 					Test.ChildBirthBeforeDeathOfParent.compare(fam.getChildList().get(j).getBirthDate(), fam.getWife().getBirthDate());
 			}
+			
+			for (int j = 0; j < fam.getChildList().size(); j++) {
+				if (fam.getChildList().get(j).getBirthDate() != null && fam.getWife().getBirthDate() != null && fam.getHusband().getBirthDate() != null)
+					Test.ParentsNotTooOld.compare(fam.getChildList().get(j).getBirthDate(), fam.getHusband().getBirthDate(), fam.getWife().getBirthDate(), fam.getChildList().get(j).getId(),fam.getWife().getId(), fam.getHusband().getId());
+			}
+			
+			Test.FewerThan15Siblings.compare(fam);
+
 		}
 			
 		} catch (Exception e) {
