@@ -93,7 +93,7 @@ public class Individual implements Comparable<Individual> {
         return this.deathDate;
     }
 
-    public double getAge() {
+    public int getAge() {
         try {
             SimpleDateFormat format = new SimpleDateFormat("dd MMM yyyy");
 
@@ -102,11 +102,12 @@ public class Individual implements Comparable<Individual> {
 
             long diff = currentDate.getTime() - birthDate.getTime();
             long diffHours = diff / (60 * 60 * 1000);
-            long diffDays = diffHours / 24; // 48
-            double diffYear = diffDays / 365.0;
-            return diffYear;
+            long diffDays = diffHours / 24; 
+            double diffYear = diffDays / 365;
+            int diffY = (int) diffYear;
+            return diffY;
         } catch (Exception ex) {}
-        return 0.0;
+        return 0;
     }
 
     public int compareTo(Individual other)
