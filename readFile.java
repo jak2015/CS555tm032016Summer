@@ -143,7 +143,10 @@ public class readFile {
 			}
 			
 			Test.FewerThan15Siblings.compare(fam);
+<<<<<<< HEAD
 			Test.NoMarriagesToDescendants.compare(fam);
+=======
+>>>>>>> origin/master
 			Test.MarriageOfSiblings.compare(fam, p.families);
 			Test.MultipleBirths.compare(fam.getChildList(), fam.getId());
 
