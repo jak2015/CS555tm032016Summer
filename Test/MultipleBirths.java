@@ -30,7 +30,7 @@ public class MultipleBirths {
 				}
 			}
 			if (count >5){
-				System.out.println("Error: "+count+" siblings are born at the same time: " + date+ " for Family Id: "+ famId);
+				System.out.println("Anamoly US14: "+count+" siblings are born at the same time: " + date+ " for Family Id: "+ famId);
 			}
 		}
 		

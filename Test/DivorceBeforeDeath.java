@@ -7,14 +7,14 @@ import java.util.Date;
 
 
 public class DivorceBeforeDeath {
-    public static boolean compare (String deathDateString, String divorceDateString, String indId, String famId) throws ParseException {
+    public static boolean compare (String deathDateString, String divorceDateString, String famId, String name) throws ParseException {
         SimpleDateFormat format = new SimpleDateFormat("dd MMM yyyy");
 
         Date divorceDate = format.parse(divorceDateString);
         Date deathDate = format.parse(deathDateString);
 
         if (divorceDate.compareTo(deathDate) == 1) {
-            System.out.println("Error: Divorce date is after the Death date for Individual ID " + indId + " Family ID " +famId);
+            System.out.println("Error US06: Divorce date of " +name+" occurs after his/her Death date in Family " +famId);
             return true;
         } else {
             return false;

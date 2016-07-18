@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class MarriageAfter14 {
 
-    public static void compare(String birthDateString, String marriageDateString, String indId, String famId, String event, String entityType) {
+    public static void compare(String birthDateString, String marriageDateString, String indId, String famId, String name) {
 
         try {
             SimpleDateFormat format = new SimpleDateFormat("dd MMM yyyy");
@@ -18,7 +18,7 @@ public class MarriageAfter14 {
             long diffDays = diffHours / 24; // 48
             long diffYear = diffDays / 365;
             if (diffYear < 14) {
-                System.out.println("Error: " +event+ " before 14 years old for " +entityType+ " id " +indId+ " with Family id " +famId);
+                System.out.println("Error US10: Marriage should occur after 14 years for "+ name +" (" +indId +") "+ "in Family " +famId);
             }
         } catch (Exception ex) {
 

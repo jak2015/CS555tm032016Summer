@@ -18,7 +18,7 @@ public class CompareLastNames {
         for (int i = 0; i < nameStringList.size(); i++) {
             for (int j = i + 1; j < nameStringList.size(); j++) {
                 if (!nameStringList.get(i).equals(nameStringList.get(j)))
-                	System.out.println("Error: Male members " +nameStringList.get(i) + " and " +nameStringList.get(j) +" of family id " +fam.getId()+ " does not have same last names.");
+                	System.out.println("Error US16: Male members " +nameStringList.get(i) + " and " +nameStringList.get(j) +" of family " +fam.getId()+ " does not have same last names");
 
                     return false;
             }

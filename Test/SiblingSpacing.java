@@ -31,7 +31,8 @@ public class SiblingSpacing {
 						if (birthDate_j != null && birthDate_k !=null){
 							int diff =(int) getDateDiff(birthDate_j,birthDate_k,TimeUnit.DAYS);
 							if (diff > 2 && diff <243){
-								System.out.println("Error: Siblings spacing: Birthdates of siblings " + childList.get(j).getId()+ " and " +childList.get(k).getId()+ " should be more than 8 months apart");
+					            System.out.println("Error US13: Birth dates of siblings "+ childList.get(j).getGivenName() + " " + childList.get(j).getSurName() +" (" +childList.get(j).getId()+")" +" and "+ childList.get(k).getGivenName() + " " + childList.get(k).getSurName() + " (" +childList.get(j).getId()+")" +" should be more than 8 months or less than 2 days apart in Family "+fam.getId());
+
 							}
 						}
 					}

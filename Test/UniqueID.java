@@ -9,7 +9,8 @@ public class UniqueID {
         for (int i = 0; i < individuals.size(); i++) {
             String id = individuals.get(i).getId();
             if (!individuals.get(i).equals(ind) && id.equals(indId)) {
-                System.out.println("Error: Individual: " +id+" has duplicate ID.");
+                System.out.println("Error US22: Individual "+ ind.getGivenName() + " " + ind.getSurName() +" (" +id +") " +"has duplicate ID");
+
                 return false;
             }
         }

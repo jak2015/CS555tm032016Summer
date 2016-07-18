@@ -8,7 +8,7 @@ public class FewerThan15Siblings
     {
         if (fam.getChildList().size() >= 15) 
         {
-            System.out.println("Error: Family " + fam.getId() + " has more than 15 siblings.");
+            System.out.println("Error US15: Family " + fam.getId() + " has more than 15 siblings");
             return false;
         }
         return true;
