@@ -145,7 +145,7 @@ public class readFile {
 			
 			Test.FewerThan15Siblings.compare(fam);
 
-			Test.NoMarriagesToDescendants.compare(fam);
+			Test.NoMarriagesToDescendants.compare(fam, p.families);
 			Test.SiblingSpacing.compare(fam);
 			Test.MarriageOfSiblings.compare(fam, p.families);
 			Test.MultipleBirths.compare(fam.getChildList(), fam.getId());
