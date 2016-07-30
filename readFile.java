@@ -75,6 +75,11 @@ public class readFile {
 				if (ind.getBirthDate() != null) {
 					Test.DateBeforeCurrentDate.compare(ind.getBirthDate(), ind.getId(), "Birth",ind.getGivenName());
 				}
+				
+				if (ind.getBirthDate() != null) {
+					Test.ListRecentBirths.compare(ind.getBirthDate(), ind.getId(), ind.getGivenName(), ind.getSurName());
+				}
+				
 				if (ind.getDeathDate() != null) {
 					Test.DateBeforeCurrentDate.compare(ind.getDeathDate(), ind.getId(), "Death",ind.getGivenName());
 				}	
@@ -144,13 +149,16 @@ public class readFile {
 			}
 			
 			Test.FewerThan15Siblings.compare(fam);
-
 			Test.NoMarriagesToDescendants.compare(fam, p.families);
 			Test.SiblingSpacing.compare(fam);
 			Test.MarriageOfSiblings.compare(fam, p.families);
 			Test.MultipleBirths.compare(fam.getChildList(), fam.getId());
-
 		}
+			
+			for (int i = 0; i < p.individuals.size(); i++) {
+				Individual ind = p.individuals.get(i);
+				Test.ListLivingSingle.list(ind);
+			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();

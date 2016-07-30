@@ -15,7 +15,6 @@ public class Individual implements Comparable<Individual> {
     private char sex;
     private String birthDate;
     private String deathDate;
-
     private Individual mother;
     private Individual father;
 

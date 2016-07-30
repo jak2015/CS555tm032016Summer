@@ -122,6 +122,7 @@ public class ParseData {
         }
 
         setIndividualsInFamilies();
+        setIndividualSpouses();
     }
 
     public Individual getIndividual(String id) {
@@ -148,6 +149,16 @@ public class ParseData {
             if (!fam.getChildIdList().isEmpty()) {
                 for (int j = 0; j < fam.getChildIdList().size(); j++)
                     fam.appendChild(getIndividual(fam.getChildIdList().get(j)));
+            }
+        }
+    }
+    
+    public void setIndividualSpouses() {
+        for (int i = 0; i < families.size(); i++) {
+            Family fam = families.get(i);
+            if (fam.getHusband() != null && fam.getWife() != null) {
+                fam.getHusband().setSpouse(fam.getWife());
+                fam.getWife().setSpouse(fam.getHusband());
             }
         }
     }

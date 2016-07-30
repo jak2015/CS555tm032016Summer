@@ -16,9 +16,9 @@ public class DateBeforeCurrentDate2 {
             System.out.println("Error US01: " +event+ " date for "+Hname+" (" +hid +") " + "and " +Wname+" (" +wid+")" +"occurs after the current date in Family "+id);
 
             return false;
-
         } else {
             return true;
+            
         }
     }
 }
