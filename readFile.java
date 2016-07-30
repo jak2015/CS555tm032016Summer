@@ -82,7 +82,8 @@ public class readFile {
 				
 				if (ind.getDeathDate() != null) {
 					Test.DateBeforeCurrentDate.compare(ind.getDeathDate(), ind.getId(), "Death",ind.getGivenName());
-				}	
+				}
+				Test.UniqueNameBirth.checkUniqueNameBirth(ind, p.individuals);
 			}
 			System.out.println();
 			
@@ -159,6 +160,7 @@ public class readFile {
 				Individual ind = p.individuals.get(i);
 				Test.ListLivingSingle.list(ind);
 			}
+			Test.ListDeceased.listDeceasedIndividuals(p);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
