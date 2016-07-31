@@ -150,7 +150,14 @@ public class readFile {
 			Test.SiblingSpacing.compare(fam);
 			Test.MarriageOfSiblings.compare(fam, p.families);
 			Test.MultipleBirths.compare(fam.getChildList(), fam.getId());
+			Test.CorrectGenderForRole.compare(fam,fam.getHusband(),fam.getWife());
 		}
+			
+			System.out.println("\n=== US30 List of Married Living Individuals ===");
+			for (int i = 0; i < p.families.size(); i++) {
+				Family fam = p.families.get(i);
+				Test.ListLivingMarried.compare(fam);
+			}
 			
 			System.out.println("\n=== US31 List of Single Living Individuals ===");
 			for (int i = 0; i < p.individuals.size(); i++) {
