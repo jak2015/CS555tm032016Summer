@@ -20,7 +20,8 @@ public class ListRecentBirths
             
             if (birthDate.compareTo(currentDate) < 0 && diffDays < 30) 
             {
-                System.out.println("Error US35: "+ Gname + " " + Sname +" (" +indId +") "+"was born in last 30 days ");
+    			System.out.println("Individual Id: " + indId + " | Name: " + Gname+ " " +Sname + " | Death Date: "+birthDateString);
+
             }
         } catch (Exception ex) {
 

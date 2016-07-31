@@ -76,10 +76,6 @@ public class readFile {
 					Test.DateBeforeCurrentDate.compare(ind.getBirthDate(), ind.getId(), "Birth",ind.getGivenName());
 				}
 				
-				if (ind.getBirthDate() != null) {
-					Test.ListRecentBirths.compare(ind.getBirthDate(), ind.getId(), ind.getGivenName(), ind.getSurName());
-				}
-				
 				if (ind.getDeathDate() != null) {
 					Test.DateBeforeCurrentDate.compare(ind.getDeathDate(), ind.getId(), "Death",ind.getGivenName());
 				}
@@ -156,10 +152,18 @@ public class readFile {
 			Test.MultipleBirths.compare(fam.getChildList(), fam.getId());
 		}
 			
+			System.out.println("\n=== US31 List of Single Living Individuals ===");
 			for (int i = 0; i < p.individuals.size(); i++) {
 				Individual ind = p.individuals.get(i);
 				Test.ListLivingSingle.list(ind);
 			}
+			
+			System.out.println("\n=== US35 List of Recently Born Individuals ===");
+			for (int i = 0; i < p.individuals.size(); i++) {
+				Individual ind = p.individuals.get(i);
+				Test.ListRecentBirths.compare(ind.getBirthDate(), ind.getId(), ind.getGivenName(), ind.getSurName());
+			}
+			
 			Test.ListDeceased.listDeceasedIndividuals(p);
 			
 		} catch (Exception e) {
